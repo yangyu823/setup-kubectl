@@ -10,8 +10,11 @@ jobs:
          #    uses: './'
          #  - run: kubectl
 
-         - uses: yangyu823/setup-kubectl@v1.2
+         - uses: yangyu823/setup-kubectl@v1.3
            with:
               config: YXBpVmVyc2lvbjogdjEKY2x1c3RlcnM6Ci0gY2x1c3RlcjoKICAgIGNlcnRpZmljYXRlLWF1dGhvcml0eS1kYXRhOiBZMlZ5ZEdsbWFXTmhkR1V0WVhWMGFHOXlhWFI1TFdSaGRHRT0KICAgIHNlcnZlcjogaHR0cHM6Ly9zZXJ2ZXIuZ29vZ2xlLmNvbQogIG5hbWU6IG15LWNsdXN0ZXIKY29udGV4dHM6Ci0gY29udGV4dDoKICAgIGNsdXN0ZXI6IG15LWNsdXN0ZXIKICAgIG5hbWVzcGFjZTogZGVmYXVsdAogICAgdXNlcjogbXktdXNlcgogIG5hbWU6IG15LWNvbnRleHQKY3VycmVudC1jb250ZXh0OiBteS1jb250ZXh0CmtpbmQ6IENvbmZpZwpwcmVmZXJlbmNlczoge30KdXNlcnM6Ci0gbmFtZTogbXktdXNlcgogIHVzZXI6CiAgICB0b2tlbjogdXNlci10b2tlbgo=
               version: 'v1.16.0' # default is latest stable
            id: install
+
+         - run: kubectl version
+         - run: kubectl config view

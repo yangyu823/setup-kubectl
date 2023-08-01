@@ -1,6 +1,10 @@
 name: 'Kubectl tool installer'
 description: 'Install a specific version of kubectl binary. Acceptable values are latest or any semantic version string like 1.15.0'
 inputs:
+   config:
+      description: 'Config of kubectl'
+      required: false
+      default: ''
    version:
       description: 'Version of kubectl'
       required: true
