@@ -191,7 +191,7 @@ describe('Testing all functions in run file.', () => {
    })
 
    test('run() - download specified version and set output', async () => {
-      jest.spyOn(core, 'getInput').mockReturnValue('v1.15.5')
+      jest.spyOn(core, 'getInput').mockReturnValueOnce('v1.15.5')
       jest.spyOn(toolCache, 'find').mockReturnValue('pathToCachedTool')
       jest.spyOn(os, 'type').mockReturnValue('Windows_NT')
       jest.spyOn(fs, 'chmodSync').mockImplementation()
@@ -209,7 +209,7 @@ describe('Testing all functions in run file.', () => {
    })
 
    test('run() - get latest version, download it and set output', async () => {
-      jest.spyOn(core, 'getInput').mockReturnValue('latest')
+      jest.spyOn(core, 'getInput').mockReturnValueOnce('latest')
       jest
          .spyOn(toolCache, 'downloadTool')
          .mockReturnValue(Promise.resolve('pathToTool'))
