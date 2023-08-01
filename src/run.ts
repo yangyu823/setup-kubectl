@@ -25,14 +25,14 @@ export async function run() {
       version = await getStableKubectlVersion()
    }
    const cachedPath = await downloadKubectl(version)
-   
+
    core.addPath(path.dirname(cachedPath))
-   let configInput = core.getInput('config',{required: false})
-   if (configInput){
+   let configInput = core.getInput('config', {required: false})
+   if (configInput) {
       const kubeConfig = getKubeConfig()
       storeKubeConfig(kubeConfig)
+      await validateKubeConfig()
    }
-   await validateKubeConfig()
    core.debug(
       `Kubectl tool version: '${version}' has been cached at ${cachedPath}`
    )
