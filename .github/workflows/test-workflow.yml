@@ -7,7 +7,7 @@ jobs:
       steps:
          - uses: actions/checkout@v3
          - name: Install kubectl
-           uses: './setup-kubectl'
+           uses: './'
          - run: kubectl
 
          #  - uses: yangyu823/setup-kubectl@v1.1
