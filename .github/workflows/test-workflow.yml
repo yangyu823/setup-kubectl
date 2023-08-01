@@ -5,12 +5,12 @@ jobs:
    setup-kubectl:
       runs-on: ubuntu-latest
       steps:
-         #  - uses: actions/checkout@v3
-         #  - name: Install kubectl
-         #    uses: './setup-kubectl'
-         #  - run: kubectl
+         - uses: actions/checkout@v3
+         - name: Install kubectl
+           uses: './setup-kubectl'
+         - run: kubectl
 
-         - uses: yangyu823/setup-kubectl@v1.1
-           with:
-              version: 'v1.16.0' # default is latest stable
-           id: install
+         #  - uses: yangyu823/setup-kubectl@v1.1
+         #    with:
+         #       version: 'v1.16.0' # default is latest stable
+         #    id: install
