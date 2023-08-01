@@ -1,0 +1,12 @@
+on:
+   push:
+      - '*'
+
+jobs:
+   setup-kubectl:
+      runs-on: [ubuntu]
+   steps:
+      - uses: actions/checkout@v3
+      - name: Install kubectl
+        uses: './setup-kubectl'
+      - run: kubectl
