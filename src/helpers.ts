@@ -48,7 +48,7 @@ export function storeKubeConfig(kubeConfig: string): void {
 }
 
 export function getKubeConfig(): string {
-   const config = core.getInput('config', {required: true})
+   const config = core.getInput('config', {required: false})
    return Buffer.from(config, 'base64').toString('utf-8')
 }
 

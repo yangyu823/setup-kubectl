@@ -27,8 +27,8 @@ export async function run() {
    const cachedPath = await downloadKubectl(version)
    
    core.addPath(path.dirname(cachedPath))
-   let config = core.getInput('config',{required: false})
-   if (config){
+   let configInput = core.getInput('config',{required: false})
+   if (configInput){
       const kubeConfig = getKubeConfig()
       storeKubeConfig(kubeConfig)
    }
