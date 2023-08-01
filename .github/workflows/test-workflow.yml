@@ -1,10 +1,9 @@
 on: [push]
 name: Test setup kubectl
 
-
 jobs:
    setup-kubectl:
-      runs-on: ubuntu-latest  
+      runs-on: ubuntu-latest
       steps:
          #  - uses: actions/checkout@v3
          #  - name: Install kubectl
@@ -13,5 +12,5 @@ jobs:
 
          - uses: yangyu823/setup-kubectl-v1@latest
            with:
-              version: `v1.16.0` # default is latest stable
+              version: 'v1.16.0' # default is latest stable
            id: install
