@@ -16,5 +16,5 @@ jobs:
               version: 'v1.16.0' # default is latest stable
            id: install
 
-         - run: kubectl version
+         - run: kubectl version --client=true
          - run: kubectl config view
