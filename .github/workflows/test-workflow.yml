@@ -10,7 +10,7 @@ jobs:
          #    uses: './setup-kubectl'
          #  - run: kubectl
 
-         - uses: yangyu823/setup-kubectl@latest
+         - uses: yangyu823/setup-kubectl@setup-kubectl-v1
            with:
               version: 'v1.16.0' # default is latest stable
            id: install
