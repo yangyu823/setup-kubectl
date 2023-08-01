@@ -20,16 +20,18 @@ const stableVersionUrl =
    'https://storage.googleapis.com/kubernetes-release/release/stable.txt'
 
 export async function run() {
-   const kubeConfig = getKubeConfig()
    let version = core.getInput('version', {required: true})
    if (version.toLocaleLowerCase() === 'latest') {
       version = await getStableKubectlVersion()
    }
    const cachedPath = await downloadKubectl(version)
-
+   
    core.addPath(path.dirname(cachedPath))
-
-   storeKubeConfig(kubeConfig)
+   let config = core.getInput('config',{required: false})
+   if (config){
+      const kubeConfig = getKubeConfig()
+      storeKubeConfig(kubeConfig)
+   }
    await validateKubeConfig()
    core.debug(
       `Kubectl tool version: '${version}' has been cached at ${cachedPath}`

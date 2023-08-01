@@ -4,7 +4,6 @@ inputs:
    config:
       description: 'Config of kubectl'
       required: false
-      default: ''
    version:
       description: 'Version of kubectl'
       required: true
