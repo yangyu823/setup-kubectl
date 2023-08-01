@@ -1,5 +1,10 @@
 import * as os from 'os'
 import * as util from 'util'
+import * as toolCache from '@actions/tool-cache'
+import * as core from '@actions/core'
+import * as path from 'path'
+import * as fs from 'fs'
+import {exec} from '@actions/exec'
 
 export function getKubectlArch(): string {
    const arch = os.arch()
@@ -28,4 +33,31 @@ export function getExecutableExtension(): string {
       return '.exe'
    }
    return ''
+}
+
+export function newTemporaryFile(prefix: string): string {
+   const directory = process.env['RUNNER_TEMP'] || ''
+   return path.join(directory, `${prefix}_${Date.now()}`)
+}
+
+export function storeKubeConfig(kubeConfig: string): void {
+   const kubeConfigPath = newTemporaryFile('kubeconfig')
+   core.debug(`Writing kubeconfig contents to ${kubeConfigPath}`)
+   fs.writeFileSync(kubeConfigPath, kubeConfig)
+   core.exportVariable('KUBECONFIG', kubeConfigPath)
+}
+
+export function getKubeConfig(): string {
+   const config = core.getInput('config', {required: true})
+   return Buffer.from(config, 'base64').toString('utf-8')
+}
+
+export async function validateKubeConfig(): Promise<void> {
+   try {
+      await exec('kubectl', ['config', 'current-context'], {silent: true})
+   } catch (e) {
+      throw new Error(
+         'kubeconfig is not a valid base64 encoded kubernetes config'
+      )
+   }
 }
