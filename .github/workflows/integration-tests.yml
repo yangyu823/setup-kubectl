@@ -38,7 +38,7 @@ jobs:
            run: pip install requests
 
          - name: Validate kubectl setup
-           run: ｜
+           run: |
               pwd
               python test/validate-kubectl.py latest
 
