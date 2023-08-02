@@ -39,8 +39,8 @@ jobs:
 
          - name: Validate kubectl setup
            run: ｜
-                pwd
-                python test/validate-kubectl.py latest
+              pwd
+              python test/validate-kubectl.py latest
 
          - name: Setup kubectl
            uses: ./
